@@ -8,11 +8,12 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Patient extends Model
 {
+    protected $guarded = ['created_at', 'updated_at'];
     public function owner(): BelongsTo
     {
         return $this->belongsTo(Owner::class);
     }
- 
+
     public function treatments(): HasMany
     {
         return $this->hasMany(Treatment::class);
